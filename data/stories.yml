@@ -1,0 +1,35 @@
+version: "3.1"
+
+stories:
+
+- story: play rock paper scissiors
+  steps:
+  - intent: greet
+  - action: utter_play
+  - intent: inform
+  - action: action_play
+  - action: utter_play_again
+
+- story: play again
+  steps:
+  - action: utter_play_again
+  - intent: affirm
+  - action: utter_play
+
+
+- story: don't play again
+  steps:
+  - action: utter_play_again
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_play
+  - intent: inform
+    entities:
+    - choice: paper
+  - slot_was_set:
+    - choice: paper
+  - action: action_play
